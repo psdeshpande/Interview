@@ -1,0 +1,52 @@
+package test;
+
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Test;
+
+import main.LinkedList;
+import main.RemoveDupFromListSol;
+import main.LinkedList.ListNode;
+import main.PartitionLinkList;
+
+public class PartitionLinkListTest {
+
+	private PartitionLinkList l1;
+	@Test
+	public void test1() {
+		LinkedList node = new LinkedList();
+		node.insert(9);
+		node.insert(11);
+		node.insert(6);
+		node.insert(2);
+		node.insert(26);
+		node.insert(7);
+		l1 = new PartitionLinkList();
+		ListNode node1 = l1.partitionList(node.head,4);
+		assertEquals(2,node1.data);
+		assertEquals(9,node1.next.data);
+		assertEquals(11,node1.next.next.data);
+		assertEquals(6,node1.next.next.next.data);
+		assertEquals(26,node1.next.next.next.next.data);
+		assertEquals(7,node1.next.next.next.next.next.data);
+	}
+	
+	@Test
+	public void test2() {
+		LinkedList node = new LinkedList();
+		node.insert(9);
+		node.insert(11);
+		node.insert(6);
+		node.insert(2);
+		node.insert(26);
+		node.insert(7);
+		l1 = new PartitionLinkList();
+		ListNode node1 = l1.partitionList(node.head,2);
+		assertEquals(9,node1.data);
+		assertEquals(11,node1.next.data);
+		assertEquals(6,node1.next.next.data);
+		assertEquals(2,node1.next.next.next.data);
+		assertEquals(26,node1.next.next.next.next.data);
+		assertEquals(7,node1.next.next.next.next.next.data);
+	}
+}
