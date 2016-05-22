@@ -14,12 +14,7 @@ public class InorderSucc {
 		}
 	}
 
-	//public TreeNode tn;
-	
-	/*public InorderSucc(TreeNode tn){
-		this.tn = tn;
-	}
-	*/
+	/*parent pointer is given*/
 	public TreeNode inorderSucc(TreeNode node){
 		if(node == null) return null;
 		
@@ -42,5 +37,26 @@ public class InorderSucc {
 		while(n.left!=null)
 			n=n.left;
 		return n;
+	}
+	
+	/*parent pointer is not given*/
+	public TreeNode inorderSuccNoParent(TreeNode node, TreeNode root){
+		if(node == null) return null;
+		if(node.right!=null)
+			return leftMost(node.right);
+		
+		TreeNode succ = null;
+		while(root!=null){
+			if(root.data > node.data){
+				succ = root;
+				root = root.left;
+			}
+			else if(root.data < node.data)
+				root = root.right;
+			else 
+				break;
+		}
+		return succ;
+	}
 	}
 }
